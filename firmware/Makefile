@@ -46,7 +46,11 @@ synaptics_firmware := $(subst $(srctree)/firmware/,,$(synaptics_img_file))
 fw-shipped-$(CONFIG_TOUCHSCREEN_LGE_SYNAPTICS) += $(synaptics_firmware)
 else
 
+ifdef CONFIG_MACH_MSM8916_C50_MPCS_US
 mit200_fw_file := $(wildcard $(srctree)/firmware/melfas/mit200/c50_mpcs_us/*)
+else
+mit200_fw_file := $(wildcard $(srctree)/firmware/melfas/mit200/c50_tmo_us/*)
+endif
 mit200_firmware := $(subst $(srctree)/firmware/,,$(mit200_fw_file))
 fw-shipped-$(CONFIG_TOUCHSCREEN_LGE_MELFAS) += $(mit200_firmware)
 
